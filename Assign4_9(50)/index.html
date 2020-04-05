@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Wheather</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='./style.css'/>
+
+</head>
+<body>
+    <h1>What location are you looking for?</h1>
+    <div id = "ip">
+    <input id = "city" placeholder="Enter the city name"/>
+    <button onclick="fetch()" id = "getWeather">Get Weather</button>
+    </div>
+    <div id="showWeather">
+        <h2 id="cityname"></h2><br/>
+        <h2 id="description"></h2><br/>
+        <img id = "icon" src = ""><br/>
+        <h2 id="temprature"></h2>
+    </div>
+    <script>
+        function fetch()
+        {
+            var city = document.getElementById("city").value;
+            var apicall = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=3dae581018f7af50163e40dacd85a303";
+            $.getJSON(apicall, weatherCallback);
+            function weatherCallback(weatherData)
+            {
+                var cityname = weatherData.name;
+                var des = weatherData.weather[0].description;
+                var temp = weatherData.main.temp - 273;
+                var icon = weatherData.weather[0].icon;
+                var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+                document.getElementById("cityname").innerHTML = "City : " +  cityname;
+                document.getElementById("description").innerHTML = "Description : " +  des;
+                document.getElementById("temprature").innerHTML = "Temprature : " +  Math.round(temp) + " <sup>o</sup>C";
+                document.getElementById("icon").src = iconurl;
+                console.log(cityname);
+                console.log(des);
+                console.log(temp);
+                console.log(icon);
+                // $('#icon').attr('scr', iconurl);
+                console.log(weatherData);
+            }
+        }
+    </script>
+        
+</body>
+</html>

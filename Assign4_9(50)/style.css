@@ -1,0 +1,29 @@
+h1
+{
+    text-align: center;
+    font-size: 200%;
+    font-family: monospace;
+}
+button
+{
+    font-size: 100%;
+    font-family: monospace;
+}
+input
+{
+    font-size: 100%;
+    font-family: monospace;
+}
+#ip
+{
+    padding-left: 40%;
+    font-family: monospace;
+    font-size: 200%;
+}
+#showWeather
+{
+    border: 2px solid black;
+    background: aqua;
+    padding-left: 40%;
+    font-family: monospace;
+}
